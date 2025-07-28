@@ -4,16 +4,16 @@ import "dotenv/config"
 //Google oAuth
 export const callbackHandler = async (req, res) => {
   const user = req.user;
-  const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET,{ expiresIn: "7d" });
+  const token = jwt.sign({ id: user._id, email: user.email, name: user.name, avatar: user.avatar }, process.env.JWT_SECRET,{ expiresIn: "7d" });
 
   res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "Lax",
+    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  res.redirect(`${process.env.FRONTENT_URL}/landing`);  //redirect to frontend ie. landing page
+  res.redirect(`${process.env.FRONTENT_URL}/`);  //redirect to frontend ie. landing page
 }
 
 //logout controller

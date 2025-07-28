@@ -10,7 +10,7 @@ const userAuth = async(req, res, next) => {
    try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if(decoded){
-      req.user = decoded;
+      req.user = decoded;   //here i got id, email, name and avatar in req.user coz during jwt sign in callbackhandler i provided all this
       next();
     }
     else{
