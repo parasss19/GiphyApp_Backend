@@ -25,9 +25,7 @@ export const logout = async(req, res) => {
         secure: process.env.NODE_ENV === 'production',
         sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
       })
-      //2 redirect user to landing page after logout
-      res.redirect(`${process.env.FRONTENT_URL}/landing`);
-
+     
       return res.status(200).json({
         success: true,
         message: "Logged Out",
