@@ -9,7 +9,7 @@ const authRouter = Router();
 authRouter.get('/googleAuth', passport.authenticate("google", { scope: ['profile', 'email'] }))
 
 //2 Google Oauth callback 
-authRouter.get('/googleAuth/callback', passport.authenticate("google", { session: false,  failureRedirect: `${process.env.FRONTENT_URL}/landing` }), callbackHandler)
+authRouter.get('/googleAuth/callback', passport.authenticate("google", { session: false,  failureRedirect: `${process.env.FRONTEND_URL}/landing` }), callbackHandler)
 
 //3 check whether user is authenticated or not using 'userAuth' middleware
 authRouter.get('/me', userAuth, isAuthenticated);
