@@ -13,7 +13,7 @@ export const callbackHandler = async (req, res) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  res.redirect(`${process.env.FRONTEND_URL}/`);  //redirect to frontend ie. landing page
+  res.redirect(`${process.env.FRONTEND_URL}`);  //redirect to frontend ie. landing page
 }
 
 //logout controller
